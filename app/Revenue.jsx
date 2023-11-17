@@ -16,7 +16,7 @@ import Link from "next/link";
 import Loader from "./Loader";
 
 const FluidAddress = "0x4E47951508Fd4A4126F8ff9CF5E6Fa3b7cC8E073";
-const INFURA = ""; 
+const INFURA = "d3f3c19f4dda400e8142216dad0da68d"; 
 
 
 const Provider = new ethers.providers.JsonRpcProvider(
