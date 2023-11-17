@@ -31,7 +31,7 @@ const Revenue = () => {
   const [error, setError] = useState("");
   const [balance, setBalance] = useState("");
   const [revBalance, setRevBalance] = useState("");
-  const [loading, setLoading] = useState(false); // New loading state
+  const [loading, setLoading] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleInputChange = (event) => {
@@ -50,7 +50,7 @@ const Revenue = () => {
     }
 
     try {
-      setLoading(true); // Set loading to true when starting the request
+      setLoading(true);
 
       const revAmount = await Provider.getBalance(
         "0x92795b9dC4Fa484fA8E045f403Eaa028093717Ad"
@@ -60,13 +60,12 @@ const Revenue = () => {
       const amount = await contract.balanceOf(walletAddress);
       setBalance(amount / 10 ** 18);
 
-      // Open the modal after fetching balances
       onOpen();
     } catch (error) {
       console.error("Error fetching balance:", error);
       setError("Error fetching balance. Please try again.");
     } finally {
-      setLoading(false); // Set loading to false when the request is complete
+      setLoading(false);
     }
   };
 
@@ -84,9 +83,9 @@ const Revenue = () => {
   };
 
   return (
-    <div className="bg-[#000004] w-full">
+    <div className="bg-[#000004] w-full h-full">
       <div className="max-w-[1240px] mx-auto p-4">
-        <div className="items-center justify-center">
+        <div className="items-center justify-center ">
           <div className="md:pt-20 pt-5 ">
             <h1 className="text-[#f2f0fe] md:text-7xl text-4xl text-balance text-left">
               Check{" "}
@@ -121,20 +120,19 @@ const Revenue = () => {
               <button
                 type="submit"
                 className="border-2 md:w-[150px] w-full bg-slate-100 px-4 py-2 text-xl items-center flex ml-auto"
-                disabled={loading} // Disable the button when loading is true
+                disabled={loading}
               >
                 {loading ? <Loader /> : "Verify"}
               </button>
             </form>
           </div>
 
-          <div className="mt-20">
-            <p className="text-sm text-white text-balance ">
-              {" "}
+          <div className="md:mt-[150px]">
+            <p className="text-sm text-white text-balance text-left ">
               <strong>Important Disclaimer: </strong>
               This is not an official website related to Fluid. The results will
-              be calculated using the formula: (Total ETH * Your Amount) /
-              Circulating Supply. Please stay tuned for updates. Additionally,
+              be calculated using the formula: (Total Revenue in ETH * Your $Fluid Amount) /
+              Circulating Supply of Fluid. Please stay tuned for updates. Additionally,
               this is a rough calculation, and the reward amount is accurate if
               users did not sell or transfer the amount between the previous
               revenue drop and the next drop. However, if users missed the
@@ -142,6 +140,8 @@ const Revenue = () => {
               results may not be accurate.
             </p>
           </div>
+
+          
 
           {/* Modal for displaying revenue details */}
           {isOpen && (
