@@ -142,4 +142,17 @@ body {
     100% {stroke-width: 2px }
   }
   
+  .marquee {
+    display: inline-block;
+    animation: marqueeAnimation 15s linear infinite;
+    white-space: nowrap;
+  }
   
+  @keyframes marqueeAnimation {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }

@@ -74,8 +74,14 @@ const Revenue = () => {
 
   const calculateRevenueShare = () => {
     if (revBalance !== undefined && balance !== "") {
-      return ((revBalance * balance) / currentSupply).toFixed(4);
+      if (balance >= 500) {
+        const calculatedShare = (revBalance * balance) / currentSupply;
+        return calculatedShare.toFixed(4);
+      } else {
+        return "Negative, Minimum 500 $FLUID Required";
+      }
     }
+  
     return "0.00";
   };
 
