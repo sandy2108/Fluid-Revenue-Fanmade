@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
 
-
 import {
   Modal,
   ModalContent,
@@ -16,8 +15,7 @@ import Link from "next/link";
 import Loader from "./Loader";
 
 const FluidAddress = "0x4E47951508Fd4A4126F8ff9CF5E6Fa3b7cC8E073";
-const INFURA = "d3f3c19f4dda400e8142216dad0da68d"; 
-
+const INFURA = "d3f3c19f4dda400e8142216dad0da68d";
 
 const Provider = new ethers.providers.JsonRpcProvider(
   `https://mainnet.infura.io/v3/${INFURA}`
@@ -81,12 +79,12 @@ const Revenue = () => {
         return "Negative, Minimum 500 $FLUID Required";
       }
     }
-  
+
     return "0.00";
   };
 
   return (
-    <div className="bg-[#000004] w-full h-screen">
+    <div className="bg-[#000004] w-full">
       <div className="max-w-[1240px] mx-auto p-4">
         <div className="items-center justify-center">
           <div className="md:pt-20 pt-5 ">
@@ -128,6 +126,21 @@ const Revenue = () => {
                 {loading ? <Loader /> : "Verify"}
               </button>
             </form>
+          </div>
+
+          <div className="mt-20">
+            <p className="text-sm text-white text-balance ">
+              {" "}
+              <strong>Important Disclaimer: </strong>
+              This is not an official website related to Fluid. The results will
+              be calculated using the formula: (Total ETH * Your Amount) /
+              Circulating Supply. Please stay tuned for updates. Additionally,
+              this is a rough calculation, and the reward amount is accurate if
+              users did not sell or transfer the amount between the previous
+              revenue drop and the next drop. However, if users missed the
+              previous random snapshot but bought in the second snapshot, the
+              results may not be accurate.
+            </p>
           </div>
 
           {/* Modal for displaying revenue details */}
